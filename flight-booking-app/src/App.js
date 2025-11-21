@@ -14,7 +14,7 @@ const App = () => {
   const [passengers, setPassengers] = useState(1);
   const [error, setError] = useState("");
 
-  const handleSearch = () => {
+    const handleSearch = () => {
     setError("");
 
     if (!from || !to || !departureDate || !passengers) {
@@ -24,6 +24,16 @@ const App = () => {
 
     if (from === to) {
       setError("From and To destinations cannot be the same");
+      return;
+    }
+
+    if (!returnDate) {
+      setError("Please select return date");
+      return;
+    }
+
+    if (returnDate < departureDate) {
+      setError("Return date cannot be before departure date");
       return;
     }
 
@@ -94,6 +104,21 @@ const App = () => {
               dateFormat="yy-mm-dd"
               className="p-inputtext-sm"
               minDate={new Date()}
+            />
+          </div>
+        </div>
+
+      <div className="p-grid p-ai-center mb-3">
+          <div className="p-col-6">
+            <label>Return Date</label>
+          </div>
+          <div className="p-col-6">
+            <Calendar
+              value={returnDate}
+              onChange={(e) => setReturnDate(e.value)}
+              dateFormat="yy-mm-dd"
+              className="p-inputtext-sm"
+              minDate={departureDate || new Date()}
             />
           </div>
         </div>
