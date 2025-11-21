@@ -3,8 +3,8 @@ export const flights = [
     id: 1,
     from: "Chennai",
     to: "Bangalore",
-    departureDate: "2025-11-25",
-    returnDate: "2025-11-30",
+    departureDate: "2025-11-21",
+    returnDate: "2025-11-22",
   },
   {
     id: 2,
@@ -70,3 +70,4 @@ export const flights = [
     returnDate: "2025-12-10",
   },
 ];
+
